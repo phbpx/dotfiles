@@ -1,0 +1,5 @@
+exec wl-paste -t text --watch clipman store --no-persist
+
+set $mod Mod4
+
+bindsym $mod+y exec clipman pick --tool=wofi --max-items=50

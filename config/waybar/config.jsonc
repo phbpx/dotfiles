@@ -1,0 +1,106 @@
+{
+  "position": "top",
+  "modules-left": [
+    "sway/workspaces"
+  ],
+  "modules-center": [
+    "sway/window"
+  ],
+  "modules-right": [
+    "idle_inhibitor",
+    "network",
+    "custom/vpn",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+  // Modules configuration
+  "sway/window": {
+    "format": "{}",
+    "max-length": 50
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " coffe",
+      "deactivated": " coffe"
+    }
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
+    },
+    "format-icons": {
+      "1": "dev",
+      "2": "www",
+      "3": "msg",
+      "4": "mus",
+      "5": "sys",
+      "6": "misc"
+    }
+  },
+  "custom/vpn": {
+    "format": "{}",
+    "interval": 1,
+    "exec": "/home/phbpx/.config/waybar/modules/vpn.sh",
+    "return-type": "json"
+  },
+  "clock": {
+    "format": "<span foreground='#C6AAE8'> </span>{:%a %d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span size='13000' foreground='#B1E3AD'>{icon}</span> {capacity}%",
+    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon}</span> {capacity}%",
+    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon}</span> {capacity}%",
+    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon}</span> {time}",
+    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip-format": "{time}"
+  },
+  "network": {
+    "interface": "wlan0",
+    "format-wifi": "<span size='13000' foreground='#F2CECF'> </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#F2CECF'> </span> Disconnected",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#F2CECF'> </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+  },
+  "pulseaudio": {
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format": "<span size='13000' foreground='#EBDDAA'>{icon}</span> {volume}%",
+    "format-muted": "<span size='14000' foreground='#EBDDAA'></span> Muted",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    }
+  }
+}

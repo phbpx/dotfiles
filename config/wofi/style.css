@@ -1,0 +1,54 @@
+  /* ::root{ */
+/*     --accent: #5291e2; */
+/*     --dark: #383C4A; */
+/*     --light: #7C818C; */
+/*     --ld: #404552; */
+/*     --dl: #4B5162 */
+/*     --white: white; */
+/* } */
+
+* {
+    font-family: 'VictorMono Nerd Font';
+    font-weight: 600;
+    font-size: 15px;
+    outline-style: none;
+    outline: none;
+}
+
+window {
+    background-color: #C9CBFF;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 0px;
+    border-bottom: 2px solid #C9CBFF;
+    background-color: #1E1E28;
+    color: #D9E0EE;
+    box-shadow: none;
+}
+
+#inner-box {
+    background-color: #1E1E28;
+
+}
+
+#outer-box {
+    margin: 2px;
+    padding: 10px;
+    background-color: #1E1E28;
+}
+
+#text {
+  padding: 5px;
+  color: #D9E0EE;
+  margin: 3px;
+}
+
+#entry:selected {
+    background-color: #6E6C7E;
+}
+
+.right {
+    color: transparent;
+}

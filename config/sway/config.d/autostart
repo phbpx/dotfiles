@@ -1,0 +1,12 @@
+# -------------------------------------------------------------
+# autostart 
+# -------------------------------------------------------------
+
+## desktop notifications
+exec mako
+
+## bluetooth
+exec blueman-applet
+
+## keyring
+exec gnome-keyring-daemon --start --components=pkcs11,secrets,ssh

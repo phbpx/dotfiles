@@ -1,0 +1,9 @@
+# Menu
+set $menu wofi
+
+# Start your launcher
+bindsym $mod+d exec $menu
+
+## Power menu
+bindsym $mod+shift+e exec ~/bin/wofi-power.sh
+

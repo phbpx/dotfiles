@@ -1,0 +1,5 @@
+# include base confif
+include /etc/sway/config.d/*
+
+# include user config
+include ~/.config/sway/config.d/*

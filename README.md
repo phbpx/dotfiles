@@ -25,3 +25,6 @@ My dotfiles repo, where you can find all my window managers and apps configurati
 | Icon theme | [fluent-dark](https://www.gnome-look.org/p/1477945) |
 | Fonts | [VictorMono](https://www.nerdfonts.com/font-downloads), [OperatorMono](https://www.typography.com/fonts/operator/styles) |
 
+# Screenshots
+
+![dev](./images/screenshot.png)

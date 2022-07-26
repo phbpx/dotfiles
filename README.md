@@ -11,7 +11,7 @@ My dotfiles repo, where you can find all my window managers and apps configurati
 | Screen locker | [swaylock-effects](https://github.com/mortie/swaylock-effects) |
 | Launcher | [wofi](https://hg.sr.ht/~scoopta/wofi) |
 | Notifications | [mako](https://github.com/emersion/mako) |
-| Terminal emulator | [kitty](https://sw.kovidgoyal.net/kitty/) |
+| Terminal emulator | [foot](https://codeberg.org/dnkl/foot/) |
 | Shell | [zsh](https://www.zsh.org/) + [prezto](https://github.com/sorin-ionescu/prezto) |
 | Prompt | [starship](https://starship.rs/)
 | Browser | [chromium](https://www.chromium.org/) |

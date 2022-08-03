@@ -1,4 +1,6 @@
-### Variables ###
+# -----------------------------------------------------------------------------------
+# VARIABLES
+# -----------------------------------------------------------------------------------
 
 # Logo key.
 set $mod Mod4
@@ -9,24 +11,27 @@ set $down j
 set $up k
 set $right l
 
-# Your preferred terminal emulator
-set $term foot
+# Terminal emulator
+set $term kitty 
 
 # Application launcher
 set $menu exec wofi --show drun
 
 # Browser
-set $browser brave
+set $browser firefox
 
-# Clipboard
+# Clipboard file
 set $clipboard "~/.local/share/clipman.json"
 
-### Startup ###
+
+# -----------------------------------------------------------------------------------
+# AUTO START 
+# -----------------------------------------------------------------------------------
 
 # bluetooth
 exec blueman-applet
 
-# bluetooth
+# network manager (nm-applet)
 exec nm-applet
 
 # notification
@@ -38,48 +43,79 @@ exec wl-paste -t text --watch clipman store --max-items 1024
 # fix monitors
 exec_always ~/.local/bin/sway-fix-monitors
 
-### Settings ###
+# FIX GTK+ applications take 20 seconds to start 
+exec systemctl --user import-environment
 
-# Monitors
 
-set $laptop eDP-1
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
-
-# Idle configuration
-# exec swayidle -w \
-# 	timeout 600 'swaylock -f' \
-# 	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-# 	before-sleep 'swaylock -f'
-
-# Lock Screen
-bindsym $mod+0 exec locklock
+# -----------------------------------------------------------------------------------
+# THEME
+# -----------------------------------------------------------------------------------
 
 # Font
-font pango:Inter 11
+font pango:Fira Sans Book 11
 
 # Borders
-default_border pixel 3
+default_border pixel 2
 hide_edge_borders none
 smart_borders on
 smart_gaps on
-gaps inner 0
+gaps inner 4
 
-# Default wallpaper (to change it, put image to ~/Pictures/wallpapers/ and name it main-wallpaper.*)
-output "*" bg "$HOME/Images/backgrounds/tokyo.png" fill
+# window decorations
+# class			            border	    background	text        indicator   child_border
+client.focused          #0088CC     #303030     #c6c6c6     #0088CC     #0088CC
+client.focused_inactive #0088CC     #303030     #c6c6c6     #0088CC     #0088CC
+client.unfocused        #0088CC     #080808     #c6c6c6     #0088CC     #303030
+client.urgent           #0088CC     #0088CC     #080808     #0088CC     #0088CC
 
-# Monitor 2
-output "DP-1" scale 1.5
+# Wallpaper
+output "*" bg "$HOME/Images/backgrounds/tokyo-night.jpg" fill
 
-# Inputs
+# GTK theming
+set $gnome-schema org.gnome.desktop.interface
 
-# Ractous
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Fluent-Dark'
+    gsettings set $gnome-schema icon-theme 'kora'
+    gsettings set $gnome-schema cursor-theme 'Breeze_Obsidian'
+    gsettings set $gnome-schema font-name 'Fira Sans Book 11'
+}
+
+
+# -----------------------------------------------------------------------------------
+# STATUS BAR
+# -----------------------------------------------------------------------------------
+
+bar {
+    font pango:TerminessTTF Nerd Font 16
+    position top
+    tray_output none
+    status_command i3status-rs
+    separator_symbol '|'
+
+    colors {
+        separator #666666
+        background #000000
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+}
+
+
+# -----------------------------------------------------------------------------------
+# INPUTS 
+# -----------------------------------------------------------------------------------
+
+# Keyboard: Ractous
 input "1121:16386:Royuan_Gaming_keyboard" {
     	xkb_layout us,pt
     	xkb_options grp:shift_caps_toggle
 }
 
-# Thinkpad
+# Keyboard: Thinkpad
 input "1:1:AT_Translated_Set_2_keyboard" {
 	xkb_layout "br"
 	xkb_variant "thinkpad"
@@ -93,46 +129,39 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     	middle_emulation enabled
 }
 
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
-floating_modifier $mod normal
 
-## Window rules ###
+# -----------------------------------------------------------------------------------
+# OUTPUTS 
+# -----------------------------------------------------------------------------------
 
-## set floating (nontiling)for apps needing it:
-for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
-for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
-for_window [app_id="nm-connection-editor"] floating enable
-for_window [class="Bitwarden"] floating enable
-for_window [app_id="pamac-manager"] floating enable, resize set width 80 ppt height 70 ppt
-for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
+# Monitor 2 (DP-1)
+output "DP-1" scale 2
 
-## set floating for window roles
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="dialog"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [window_role="About"] floating enable
-for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
-for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
-for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
-for_window [title="Picture in picture"] floating enable, sticky enable
-for_window [title="nmtui"] floating enable,  resize set width 50 ppt height 70 ppt
-for_window [app_id="xsensors"] floating enable
-for_window [title="Save File"] floating enable
-for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+# Monitor 2 (DP-2)
+output "DP-2" scale 2
 
-## Inhibit idle
-for_window [app_id="firefox"] inhibit_idle fullscreen
-for_window [app_id="brave-browser"] inhibit_idle fullscreen
+# Laptop lid
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
-### Key bindings ###
+
+# -----------------------------------------------------------------------------------
+# SWAYLOCK
+# -----------------------------------------------------------------------------------
+
+# Idle config
+exec swayidle -w \
+	timeout 599 'swaylock -f' \
+	timeout 1799 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+ 	before-sleep 'swaylock -f'
+
+# Lock Screen
+bindsym $mod+0 exec locklock
+
+# -----------------------------------------------------------------------------------
+# KEY BINDINGS
+# -----------------------------------------------------------------------------------
 
 # Reload the configuration file
 bindsym --to-code $mod+Shift+r reload
@@ -260,24 +289,45 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-### status bar ###
 
-bar {
-    font pango:JetBrainsMono Nerd Font 12
-    position top
-    tray_output none
-    status_command i3status-rs
-    separator_symbol '|'
+# -----------------------------------------------------------------------------------
+# WINDOW RULES
+# -----------------------------------------------------------------------------------
 
-    colors {
-        separator #666666
-        background #000000
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
-}
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
 
-include /etc/sway/config.d/*
+## set floating (nontiling)for apps needing it:
+for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
+for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [class="Bitwarden"] floating enable
+for_window [app_id="pamac-manager"] floating enable, resize set width 80 ppt height 70 ppt
+for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
+
+## set floating for window roles
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
+for_window [title="Picture in picture"] floating enable, sticky enable
+for_window [title="nmtui"] floating enable,  resize set width 50 ppt height 70 ppt
+for_window [app_id="xsensors"] floating enable
+for_window [title="Save File"] floating enable
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+
+## Inhibit idle
+for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [app_id="brave-browser"] inhibit_idle fullscreen
+

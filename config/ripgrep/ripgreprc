@@ -1,10 +1,10 @@
 # Colors
 --colors
-match:bg:black
+match:bg:blue
 --colors
-match:fg:magenta
+match:fg:black
 --colors
-line:fg:green
+line:fg:cyan
 
 # Options
 --smart-case

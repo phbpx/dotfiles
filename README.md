@@ -14,7 +14,7 @@ My dotfiles repo, where you can find all my window managers and apps configurati
 | Terminal emulator | [foot](https://codeberg.org/dnkl/foot/) |
 | Shell | [zsh](https://www.zsh.org/) + [prezto](https://github.com/sorin-ionescu/prezto) |
 | Prompt | [starship](https://starship.rs/)
-| Browser | [chromium](https://www.chromium.org/) |
+| Browser | [Firefox](https://www.mozilla.org/pt-BR/firefox/new/) + qutebrowser |
 | IDE'S | [vscodium](https://vscodium.com/), [lunarvim](https://www.lunarvim.org/) |
 | Image viewer | [imv](https://sr.ht/~exec64/imv/), [sxiv](https://wiki.archlinux.org/title/Sxiv) |
 | Video/Audio player | [mpv](https://wiki.archlinux.org/title/Mpv) |

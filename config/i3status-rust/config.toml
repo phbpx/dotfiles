@@ -19,7 +19,7 @@ interval = 5
 [[block]]
 block = "net"
 device = "wlan0"
-format = "{signal_strength} at {ssid}"
+format = "{signal_strength} at {ssid} [{ip}]"
 hide_inactive = true
 interval = 5
 [block.theme_overrides]
@@ -35,37 +35,8 @@ interval = 5
 idle_fg = "#22CC00"
 
 [[block]]
-block = "disk_space"
-path = "/"
-info_type = "used"
-format = "{icon} {available} free"
-
-[[block]]
-block = "memory"
-format_mem = "{mem_used_percents}"
-format_swap = "{swap_used_percents}"
-display_type = "memory"
-icons = true
-clickable = true
-interval = 5
-warning_mem = 80
-warning_swap = 80
-critical_mem = 95
-critical_swap = 95
-[block.theme_overrides]
-warning_bg = "#0088cc"
-warning_fg = "#ffffff"
-critical_bg = "#900000"
-critical_fg = "#ffffff"
-
-[[block]]
-block = "cpu"
-format = "{utilization}"
-[block.theme_overrides]
-warning_bg = "#0088cc"
-warning_fg = "#ffffff"
-critical_bg = "#900000"
-critical_fg = "#ffffff"
+block = "load"
+interval = 1
 
 [[block]]
 block = "sound"

@@ -1,7 +1,7 @@
 ignore-empty-password
 disable-caps-lock-text
-image=/home/phbpx/Images/backgrounds/tokyo-night.jpg
-font=Comic Code
+image=/home/phbpx/Images/backgrounds/neon-space.jpg
+font=ComicCode Nerd Font
 
 text-ver-color=00000000
 text-wrong-color=00000000
@@ -29,8 +29,6 @@ indicator
 clock
 timestr=%I:%M %p
 datestr=%A, %d %B
-indicator-x-position=500
-indicator-y-position=875
 indicator-radius=450
 font-size=148
-text-color=55ff33
+text-color=ffffff

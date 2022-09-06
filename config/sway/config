@@ -46,7 +46,6 @@ exec_always ~/.local/bin/sway-fix-monitors
 # FIX GTK+ applications take 20 seconds to start 
 exec systemctl --user import-environment
 
-
 # -----------------------------------------------------------------------------------
 # THEME
 # -----------------------------------------------------------------------------------
@@ -55,28 +54,28 @@ exec systemctl --user import-environment
 font pango:Fira Sans Book 11
 
 # Borders
-default_border pixel 2
+default_border pixel 1
 hide_edge_borders none
 smart_borders on
 smart_gaps on
-gaps inner 4
+gaps inner 0
 
 # window decorations
-# class			            border	    background	text        indicator   child_border
+# class			border	    background	text        indicator   child_border
 client.focused          #0088CC     #303030     #c6c6c6     #0088CC     #0088CC
 client.focused_inactive #0088CC     #303030     #c6c6c6     #0088CC     #0088CC
 client.unfocused        #0088CC     #080808     #c6c6c6     #0088CC     #303030
 client.urgent           #0088CC     #0088CC     #080808     #0088CC     #0088CC
 
 # Wallpaper
-output "*" bg "$HOME/Images/backgrounds/tokyo-night.jpg" fill
+output "*" bg "$HOME/Images/backgrounds/neon-space.jpg" fill
 
 # GTK theming
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Fluent-Dark'
-    gsettings set $gnome-schema icon-theme 'kora'
+    gsettings set $gnome-schema gtk-theme 'Fluent-Light'
+    gsettings set $gnome-schema icon-theme 'Fluent'
     gsettings set $gnome-schema cursor-theme 'Breeze_Obsidian'
     gsettings set $gnome-schema font-name 'Fira Sans Book 11'
 }
@@ -117,12 +116,12 @@ input "1121:16386:Royuan_Gaming_keyboard" {
 
 # Keyboard: Thinkpad
 input "1:1:AT_Translated_Set_2_keyboard" {
-	xkb_layout "br"
-	xkb_variant "thinkpad"
+	xkb_layout "us,br"
+    	xkb_options grp:shift_caps_toggle
 }
 
 # Touchpad
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "1739:52710:DLL096D:01_06CB:CDE6_Touchpad" {
     	dwt enabled
     	tap enabled
     	natural_scroll enabled
@@ -135,10 +134,10 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 # -----------------------------------------------------------------------------------
 
 # Monitor 2 (DP-1)
-output "DP-1" scale 2
+output "DP-1" scale 1.2
 
 # Monitor 2 (DP-2)
-output "DP-2" scale 2
+output "DP-2" scale 1.2
 
 # Laptop lid
 set $laptop eDP-1
@@ -152,12 +151,12 @@ bindswitch --reload --locked lid:off output $laptop enable
 
 # Idle config
 exec swayidle -w \
-	timeout 599 'swaylock -f' \
-	timeout 1799 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	timeout 600 'swaylock -f' \
+	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
  	before-sleep 'swaylock -f'
 
 # Lock Screen
-bindsym $mod+0 exec locklock
+bindsym $mod+0 exec swaylock -f
 
 # -----------------------------------------------------------------------------------
 # KEY BINDINGS
@@ -182,13 +181,13 @@ bindsym $mod+Shift+e exec 'wofi-power.sh'
 bindsym --to-code $mod+w exec $browser
 
 # Print
-bindsym $mod+p exec grim -g "$(slurp)" - | swappy -f -
+bindsym --to-code $mod+p exec grim -g "$(slurp)" - | swappy -f -
 
 # Clipman
 bindsym $mod+y exec clipman pick --tool="wofi" --max-items=30
 
 # dismiss notifications
-bindsym 	Control+space 	exec 	makoctl dismiss
+bindsym Control+space exec makoctl dismiss
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -289,6 +288,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+## Special keys
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # -----------------------------------------------------------------------------------
 # WINDOW RULES

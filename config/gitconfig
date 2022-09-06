@@ -1,0 +1,46 @@
+[user]
+	name = Paulo Bortolotti
+	email = bortolotti.paulo@gmail.com
+
+[alias]
+  a = add --all
+	nb = checkout -b
+	c = checkout
+	cm = commit -m
+	cam = commit -am
+	s = status -sb
+	puff = "push --force-with-lease"
+	ls = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n          %aD (%ar %C(red)- %an%Creset)' --graph --color
+	ll = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n          %aD (%ar %C(red)- %an%Creset)' --graph --color --all
+	up = "pull --ff-only --stat --prune"
+
+[push]
+	default = current
+
+[core]
+	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[color]
+	ui = true
+
+[interactive]
+	diffFilter = diff-so-fancy --patch
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[init]
+	defaultBranch = main

@@ -1,14 +1,5 @@
-  /* ::root{ */
-/*     --accent: #5291e2; */
-/*     --dark: #383C4A; */
-/*     --light: #7C818C; */
-/*     --ld: #404552; */
-/*     --dl: #4B5162 */
-/*     --white: white; */
-/* } */
-
 * {
-    font-family: 'VictorMono Nerd Font';
+    font-family: 'ComicCode Nerd Font';
     font-weight: 600;
     font-size: 15px;
     outline-style: none;
@@ -16,32 +7,33 @@
 }
 
 window {
-    background-color: #C9CBFF;
+    background-color: #0088CC;
 }
 
 #input {
-    margin: 5px;
-    border-radius: 0px;
-    border-bottom: 2px solid #C9CBFF;
-    background-color: #1E1E28;
-    color: #D9E0EE;
+    margin: 2px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #0088CC;
+    background-color: #000;
+    color: #fff;
     box-shadow: none;
 }
 
 #inner-box {
-    background-color: #1E1E28;
+    background-color: #000;
 
 }
 
 #outer-box {
     margin: 2px;
     padding: 10px;
-    background-color: #1E1E28;
+    background-color: #000;
 }
 
 #text {
   padding: 5px;
-  color: #D9E0EE;
+  color: #fff;
   margin: 3px;
 }
 

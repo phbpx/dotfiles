@@ -46,6 +46,7 @@ exec_always ~/.local/bin/sway-fix-monitors
 # FIX GTK+ applications take 20 seconds to start 
 exec systemctl --user import-environment
 
+
 # -----------------------------------------------------------------------------------
 # THEME
 # -----------------------------------------------------------------------------------
@@ -55,27 +56,20 @@ font pango:Fira Sans Book 11
 
 # Borders
 default_border pixel 1
-hide_edge_borders none
+hide_edge_borders smart_no_gaps
 smart_borders on
 smart_gaps on
-gaps inner 0
-
-# window decorations
-# class			border	    background	text        indicator   child_border
-client.focused          #0088CC     #303030     #c6c6c6     #0088CC     #0088CC
-client.focused_inactive #0088CC     #303030     #c6c6c6     #0088CC     #0088CC
-client.unfocused        #0088CC     #080808     #c6c6c6     #0088CC     #303030
-client.urgent           #0088CC     #0088CC     #080808     #0088CC     #0088CC
+gaps inner 4
 
 # Wallpaper
-output "*" bg "$HOME/Images/backgrounds/neon-space.jpg" fill
+output "*" bg "$HOME/Images/backgrounds/ChinaTown.png" fill
 
 # GTK theming
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Fluent-Light'
-    gsettings set $gnome-schema icon-theme 'Fluent'
+    gsettings set $gnome-schema gtk-theme 'Fluent-Dark'
+    gsettings set $gnome-schema icon-theme 'kora'
     gsettings set $gnome-schema cursor-theme 'Breeze_Obsidian'
     gsettings set $gnome-schema font-name 'Fira Sans Book 11'
 }
@@ -86,21 +80,7 @@ exec_always {
 # -----------------------------------------------------------------------------------
 
 bar {
-    font pango:TerminessTTF Nerd Font 16
-    position top
-    tray_output none
-    status_command i3status-rs
-    separator_symbol '|'
-
-    colors {
-        separator #666666
-        background #000000
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
+  swaybar_command waybar
 }
 
 
@@ -111,17 +91,20 @@ bar {
 # Keyboard: Ractous
 input "1121:16386:Royuan_Gaming_keyboard" {
     	xkb_layout us,pt
-    	xkb_options grp:shift_caps_toggle
+      xkb_variant intl,
+    	xkb_options grp:alt_shift_toggle
+      xkb_options caps:ctrl_modifier
 }
 
 # Keyboard: Thinkpad
 input "1:1:AT_Translated_Set_2_keyboard" {
-	xkb_layout "us,br"
-    	xkb_options grp:shift_caps_toggle
+	xkb_layout "br"
+	xkb_variant "thinkpad"
+  xkb_options caps:ctrl_modifier
 }
 
 # Touchpad
-input "1739:52710:DLL096D:01_06CB:CDE6_Touchpad" {
+input "2:7:SynPS/2_Synaptics_TouchPad" {
     	dwt enabled
     	tap enabled
     	natural_scroll enabled
@@ -134,10 +117,10 @@ input "1739:52710:DLL096D:01_06CB:CDE6_Touchpad" {
 # -----------------------------------------------------------------------------------
 
 # Monitor 2 (DP-1)
-output "DP-1" scale 1.2
+output "DP-1" mode "3840x2160@59.997Hz" scale 1.2
 
 # Monitor 2 (DP-2)
-output "DP-2" scale 1.2
+output "DP-2" mode "3840x2160@59.997Hz" scale 1.2
 
 # Laptop lid
 set $laptop eDP-1
@@ -151,12 +134,12 @@ bindswitch --reload --locked lid:off output $laptop enable
 
 # Idle config
 exec swayidle -w \
-	timeout 600 'swaylock -f' \
+	timeout 600 'swaylock' \
 	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
- 	before-sleep 'swaylock -f'
+ 	before-sleep 'swaylock'
 
 # Lock Screen
-bindsym $mod+0 exec swaylock -f
+bindsym --to-code $mod+0 exec swaylock
 
 # -----------------------------------------------------------------------------------
 # KEY BINDINGS
@@ -175,7 +158,7 @@ bindsym --to-code $mod+q kill
 bindsym --to-code $mod+d exec $menu
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec 'wofi-power.sh'
+bindsym --to-code $mod+Shift+e exec 'wofi-power.sh'
 
 # Start browser
 bindsym --to-code $mod+w exec $browser
@@ -184,10 +167,10 @@ bindsym --to-code $mod+w exec $browser
 bindsym --to-code $mod+p exec grim -g "$(slurp)" - | swappy -f -
 
 # Clipman
-bindsym $mod+y exec clipman pick --tool="wofi" --max-items=30
+bindsym --to-code $mod+y exec clipman pick --tool="wofi" --max-items=30
 
 # dismiss notifications
-bindsym Control+space exec makoctl dismiss
+bindsym --to-code Control+space exec makoctl dismiss
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -243,7 +226,7 @@ bindsym $mod+v splitv
 
 # Switch the current container between different layout styles
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # Make the current focus fullscreen
@@ -264,6 +247,16 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+
+# Audio
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# brightnessctl
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Resizing containers:
 mode "resize" {
@@ -288,13 +281,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-## Special keys
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # -----------------------------------------------------------------------------------
 # WINDOW RULES
@@ -325,9 +311,10 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [window_role="About"] floating enable
 for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
-for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+# for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
 for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
 for_window [title="Picture in picture"] floating enable, sticky enable
+for_window [title="^Picture-in-picture$"] floating enable, sticky enable
 for_window [title="nmtui"] floating enable,  resize set width 50 ppt height 70 ppt
 for_window [app_id="xsensors"] floating enable
 for_window [title="Save File"] floating enable
@@ -335,5 +322,6 @@ for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
 
 ## Inhibit idle
 for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [app_id="firefoxdeveloperedition"] inhibit_idle fullscreen
 for_window [app_id="brave-browser"] inhibit_idle fullscreen
 

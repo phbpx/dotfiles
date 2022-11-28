@@ -1,6 +1,7 @@
 * {
   font-family: "TerminessTTF Nerd Font";
   font-size: 20px;
+  min-height: 0;
 }
 
 window#waybar { 
@@ -60,12 +61,14 @@ window#waybar.empty {
 	background-color: #323232;
 }
 
-#network, #temperature, #backlight, #pulseudio, #battery, #cpu, #memory, #battery, #idle_inhibitor {
+#network, #temperature, #backlight, #pulseaudio, #battery, #cpu, #memory, #battery, #idle_inhibitor, #custom-vpn {
   padding: 0px 15px 0px 15px;
+  color: #dbdbdb;
 }
 
 #clock {
-	margin: 0px 0px 0px 0px;
+	margin: 0px 5px 0px 0px;
+  color: #dbdbdb;
 }
 
 #tray{

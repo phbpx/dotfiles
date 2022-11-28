@@ -1,7 +1,7 @@
 ignore-empty-password
 disable-caps-lock-text
-image=/home/phbpx/Images/backgrounds/neon-space.jpg
-font=ComicCode Nerd Font
+image=/home/phbpx/Images/backgrounds/ChinaTown.png
+font=Comic Code
 
 text-ver-color=00000000
 text-wrong-color=00000000
@@ -31,4 +31,4 @@ timestr=%I:%M %p
 datestr=%A, %d %B
 indicator-radius=450
 font-size=148
-text-color=ffffff
+text-color=fff

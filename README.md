@@ -23,4 +23,3 @@ My dotfiles repo, where you can find all my window managers and apps configurati
 | Document viewer | [zathura](https://wiki.archlinux.org/title/Zathura) |
 | GTK theme | [catppuccin](https://www.gnome-look.org/p/1715554) |
 | Icon theme | [fluent-dark](https://www.gnome-look.org/p/1477945) |
-| Fonts | [VictorMono](https://www.nerdfonts.com/font-downloads), [OperatorMono](https://www.typography.com/fonts/operator/styles) |

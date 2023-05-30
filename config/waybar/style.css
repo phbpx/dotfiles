@@ -1,64 +1,70 @@
 * {
-  font-family: "TerminessTTF Nerd Font";
+  font-family: "Terminess Nerd Font";
   font-size: 20px;
   min-height: 0;
+  border-radius: 0;
 }
 
 window#waybar { 
-  background-color: #225877; 
-  color: #ffffff;    
+  background-color: #005f87;
+  color: #eeeeee;    
   padding: 0;
   margin: 0;
 }
 
 .modules-left {
-	background-color: #323232;
-	padding: 0px 0px 0px 0px;
+  background-color: #1c1c1c;
+  padding: 0px 0px 0px 0px;
 }
 
 .modules-right {
-	background-color: #323232;
-	padding: 0px 5px 0px 0px;
+  background-color: #1c1c1c;
+  padding: 0px 5px 0px 0px;
 }
 
 #custom-scratch {
-	background-color: #323232;
-	color: #b8b8b8;
-	padding: 0px 9px 0px 9px;
+  background-color: #1c1c1c;
+  color: #b8b8b8;
+  padding: 0px 9px 0px 9px;
 }
 
 #workspaces button {
-	padding: 0px 11px 0px 11px; 
- 	min-width: 1px;
-	color: #888888;
+  padding: 0px 11px 0px 11px; 
+  min-width: 1px;
+  color: #888888;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
 }
 
 #workspaces button.focused { 
-	padding: 0px 11px 0px 11px; 
-	background-color: #285577;
-	color: #ffffff;
+  padding: 0px 11px 0px 11px; 
+  background-color: #005f87;
+  color: #eeeeee;
 }
 
 #mode { 
   background-color: #900000;
-  color: #ffffff;
+  color: #eeeeee;
   padding: 0px 5px 0px 5px;
   border: 1px solid #2f343a;
 }
 
 #window {
-  color: #ffffff;
-  background-color: #285577;
+  color: #eeeeee;
+  background-color: #005f87;
   padding: 0px 10px 0px 10px;
 }
 
 window#waybar.empty #window {
-	background-color: transparent;
-	color: transparent;
+  background-color: transparent;
+  color: transparent;
 }
 
 window#waybar.empty {
-	background-color: #323232;
+  background-color: #1c1c1c;
 }
 
 #network, #temperature, #backlight, #pulseaudio, #battery, #cpu, #memory, #battery, #idle_inhibitor, #custom-vpn {
@@ -67,17 +73,17 @@ window#waybar.empty {
 }
 
 #clock {
-	margin: 0px 5px 0px 0px;
+  margin: 0px 15px 0px 10px;
   color: #dbdbdb;
 }
 
 #tray{
- padding: 0px 8px 0px 5px;
- margin: 0px 5px 0px 5px;
+  padding: 0px 8px 0px 5px;
+  margin: 0px 5px 0px 5px;
 }
 
 #battery.critical {
- color: #ff5555;
+  color: #ff5555;
 }
 
 #network.disconnected {

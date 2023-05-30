@@ -1,23 +1,34 @@
 {
-	"layer": "top",	
-	"position": "top",
+  "layer": "top",	
+  "position": "top",
   "height": 27,
   "modules-left": ["sway/workspaces", "custom/scratch", "sway/mode", "sway/window"],
   "modules-center": [],
-  "modules-right": ["custom/vpn", "network", "cpu", "pulseaudio", "battery", "tray", "clock", "idle_inhibitor"],
-
-	"sway/workspaces": {
+  "modules-right": ["custom/vpn", "network", "cpu", "pulseaudio", "battery", "clock", "tray"],
+  
+  "sway/workspaces": {
     "disable-scroll": true,
     "disable-markup": true,
-    "format": "{index}" 
+    "format": "{index}",
+    "persistent_workspaces": {
+	"1": [],
+	"2": [],
+	"3": [],
+	"4": [],
+	"5": [],
+	"6": [],
+	"7": [],
+	"8": [],
+	"9": [],
+    }
   },
-
-	"sway/window": {
+  
+  "sway/window": {
     "format": "{}",
-    "max-length": 150
+    "max-length": 100,
   },
 
-	"custom/scratch": {
+  "custom/scratch": {
     "interval": 3,
     "exec": "swaymsg -t get_tree | jq 'recurse(.nodes[]) | first(select(.name==\"__i3_scratch\")) | .floating_nodes | length | select(. >= 0)'",
     "format": "^{}", 
@@ -31,7 +42,7 @@
   },
 
   "clock": {
-    "format": "  {:%b %e %R}",
+    "format": "{:%R}",
     "interval": 30
   },
 
@@ -42,44 +53,42 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-icons": ["  ", "  ", "  ", "  ", "  "],
+    "format": "BAT: {capacity}%",
     "max-length": 25
-  },
-
-  "cpu": {
-    "interval": 10,
-    "format": "  {usage}%",
-    "max-length": 10
   },
 
   "network": {
     "interface": "wlan0", 
-    "format-wifi": "直  CONNECTED",
-    "format-disconnected": "睊  DISCONNECTED",
+    "format-wifi": "CONNECTED",
+    "format-disconnected": "DISCONNECTED",
     "interval": 60
   },
 
+  "cpu": {
+    "interval": 10,
+    "format": "CPU: {}%",
+    "max-length": 10
+  },
+
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-bluetooth": " {volume}%",
-    "format-muted":"婢  Mute",
+    "format": "VOL: {volume}%",
+    "format-bluetooth": "VOL (BT): {volume}%",
+    "format-muted":"MUTED",
     "interval": 60,
-    "format-icons": {
-      "default": [" "]
-    }
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle" 
   },
 
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-        "activated": " ",
-        "deactivated": " "
+      "activated": " ",
+      "deactivated": " "
     }
   },
 
   "custom/vpn": {
-    "format": " VPN",
+    "format": "VPN",
     "exec": "echo '{\"class\": \"connected\"}'",
     "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
     "return-type": "json",

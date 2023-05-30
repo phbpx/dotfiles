@@ -1,30 +1,20 @@
-/* ::root{ */
-/*     --accent: #5291e2; */
-/*     --dark: #383C4A; */
-/*     --light: #7C818C; */
-/*     --ld: #404552; */
-/*     --dl: #4B5162 */
-/*     --white: white; */
-/* } */
-
 *{
-  font-family: monospace;
-  font-family: 'ComicMono Nerd Font';
-  font-weight: 600;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-weight: 500;
   font-size: 16px;
   outline: none;
 }
 
 window {
-  background-color: #225877;
+  background-color: #005f87;
 }
 
 #input {
   margin: 5px;
   border-radius: 0px;
   border: none;
-  border-bottom: 3px solid #225877;
-  background-color: #323232;
+  border-bottom: 3px solid #005f87;
+  background-color: #1c1c1c;
   color: white;
   outline: none;
   box-shadow: none;
@@ -35,13 +25,13 @@ window {
 }
 
 #inner-box {
-  background-color: #323232;
+  background-color: #1c1c1c;
 }
 
 #outer-box {
   margin: 5px;
   padding:20px;
-  background-color: #323232;
+  background-color: #1c1c1c;
 }
 
 #text {
@@ -49,3 +39,6 @@ window {
   color: white;
 }
 
+#entry:selected {
+  background-color: #005f87;
+}

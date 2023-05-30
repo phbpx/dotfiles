@@ -1,9 +1,8 @@
 show=drun
-height=500
-width=600
+height=600
+width=800
 term=foot
-image_size=25
 insensitive=true
-allow_images=true
+allow_images=false
 allow_markup=true
 no_actions=true

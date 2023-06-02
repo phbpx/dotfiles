@@ -21,5 +21,3 @@ My dotfiles repo, where you can find all my window managers and apps configurati
 | Music player | spotify |
 | Screenshots | [grim](https://sr.ht/~emersion/grim/), [slurp](https://github.com/emersion/slurp), [swappy](https://github.com/jtheoof/swappy) |
 | Document viewer | [zathura](https://wiki.archlinux.org/title/Zathura) |
-| GTK theme | [catppuccin](https://www.gnome-look.org/p/1715554) |
-| Icon theme | [fluent-dark](https://www.gnome-look.org/p/1477945) |

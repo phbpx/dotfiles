@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+file_name="COTAHIST_$1.ZIP"
+url2download="https://bvmf.bmfbovespa.com.br/InstDados/SerHist/$file_name"
+
+echo "downloading $file_name ..."
+wget -q $url2download -O $file_name
+echo "download compete!"

@@ -1,0 +1,98 @@
+live_config_reload = true
+working_directory = "None"
+
+[bell]
+duration = 0
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "Warn"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[mouse]
+hide_when_typing = false
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+dynamic_title = true
+opacity = 1.0
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 8
+y = 8
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = '#1A1B1F'
+foreground = '#DFE0EA'
+
+[colors.normal]
+black = '#272932'
+red = '#E85A84'
+green = '#94DD8E'
+yellow = '#E9D26C'
+blue = '#7EB7E6'
+magenta = '#D895C7'
+cyan = '#89BEB7'
+white = '#CFD0D7'
+  
+[colors.bright]
+black = '#16181D'
+red = '#E85A84'
+green = '#94DD8E'
+yellow = '#E9D26C'
+blue = '#7EB7E6'
+magenta = '#D895C7'
+cyan = '#89BEB7'
+white = '#DFE0EA'
